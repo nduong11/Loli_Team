@@ -4,7 +4,14 @@ const dotenv = require('dotenv');
 
 // Load environment variables from .env file
 dotenv.config();
-const MONGODB_URI = "mongodb://localhost:27017/ecoquest_db";
+
+let database_host = process.env.DB_HOST || "";
+let database = process.env.DB_NAME || "";
+let database_port = process.env.DB_PORT || "";
+let database_username = process.env.DB_USER || "";
+let database_password = process.env.DB_PASSWORD || "";
+
+const MONGODB_URI = `mongodb://${database_username}:${database_password}@${database_host}:${database_port}/${database}`;
 
 // Initialize the app
 const app = express();
@@ -27,7 +34,7 @@ app.use('/api/auth', authRoutes); // Add the authentication routes
 
 // Simple route
 app.get('/', (req, res) => {
-  res.send('Welcome to the Express REST API!');
+  res.send('Welcome to the Express REST APIIIII!');
 });
 
 // Set the port
