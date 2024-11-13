@@ -42,7 +42,7 @@ router.get('/users/:id', async (req, res) => {
 // Update a user
 router.put('/users/:id', async (req, res) => {
   try {
-    const { name, email, point } = req.body;
+    const { point } = req.body;
     const user = await User.findByIdAndUpdate(
       req.params.id,
       { point},
